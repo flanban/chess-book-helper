@@ -1,0 +1,9 @@
+= @match.pgn
+
+%br
+
+- @match.books.each do |book|
+  = book.title
+
+= link_to 'Edit', edit_match_path(@match)
+= link_to 'back to matches', matches_path

@@ -1,0 +1,23 @@
+= form_for(@match) do |f|
+
+  - if @match.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@match.errors.count, "error")
+        prohibited
+        this match from being saved:
+      %ul
+        - @match.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p
+    = f.label :pgn
+    %br/
+    = f.text_area :pgn
+  %p
+    = f.submit
+
+  - for book in Book.all
+    = check_box_tag 'match[book_ids][]', book.id, @match.books.include?(book)
+    = book.title
+    %br

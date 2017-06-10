@@ -1,0 +1,60 @@
+%h1
+  = @book.title
+
+%ul.hidden
+  %li
+  - @book.matches.each do |match|
+    %li
+      =link_to match.id, match_path(match), :data => { :pgn => match.pgn }, :class => 'game'
+
+.game-picker
+  %form
+    %select#gameSelect{:onchange => "loadGame(this.value);return false;"}
+
+
+
+#board
+
+#board-buttons
+  %button#btnStart.btn.btn-default{:type => "button"}
+    %i.fa.fa-fast-backward.fa-lg
+  %button#btnPrevious.btn.btn-default{:type => "button"}
+    %i.fa.fa-step-backward.fa-lg
+  %button#btnNext.btn.btn-default{:type => "button"}
+    %i.fa.fa-step-forward.fa-lg
+  %button#btnEnd.btn.btn-default{:type => "button"}
+    %i.fa.fa-fast-forward.fa-lg
+
+#game-data
+
+.book-info
+  %h3 book info
+  %p
+    by
+    = @book.author
+  %p © 1988
+  %p published by: chess press
+
+= link_to 'Edit Book', edit_book_path(@book)
+= link_to 'Book Directory', books_path
+
+.row.hidden
+  .col-xs-12
+    %h4 Keyboard Shortcuts
+    %dl.dl-horizontal
+      %dt Next move:
+      %dd Right arrow key
+      %dt Previous move:
+      %dd Left arrow key
+      %dt End of game:
+      %dd Ctrl + right arrow key
+      %dt Start of game:
+      %dd Ctrl + left arrow key
+      %dt Next game:
+      %dd Up arrow key
+      %dt Previous game:
+      %dd Down arrow key
+      %dt First game:
+      %dd Ctrl + up  arrow key
+      %dt Last game:
+      %dd Ctrl + down arrow key

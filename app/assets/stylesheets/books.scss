@@ -1,0 +1,123 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.hidden {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color:#4c8839;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', Georgia, Times, serif;
+}
+
+p, div {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+.book-info {
+  
+  h3 {
+    font-size:18px;
+
+  }
+}
+
+#btnStart {
+  background-image: url(image_path('btn-start.png'));
+}
+#btnNext{
+  background-image: url(image_path('btn-next.png'));
+}
+#btnPrevious {
+  background-image: url(image_path('btn-prev.png'));
+}
+#btnEnd {
+  background-image: url(image_path('btn-end.png'));
+}
+
+#board-buttons {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: auto;
+  display:flex;
+  justify-content: space-between;
+}
+
+#board-buttons button {
+  position: relative;
+  float: left;
+  width: 24%;
+  height: 22vw;
+  border:1px solid #4c8839;
+  background-color:transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 35%;
+  &:focus {
+    background-color:rgba(76,136,57,.1);
+    outline:none;
+  }
+  &:active, .active {
+    background-color:rgba(76,136,57,.3);
+  }
+}
+
+.highlight {
+  background-color: #F3F315;
+}
+#game-data {
+  background-color:rgba(76,136,57,.1);
+  padding:12px;
+  p {
+    margin-bottom: .5em;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 300;
+    &:nth-of-type(1) {
+      font-weight: bold;
+      font-style: initial;
+      //font-size: initial;
+    }
+  }
+}
+.gameMoves {
+  margin: 0px 0 12px 0;
+  font-weight: bold;
+  span {
+    font-weight: 300;
+  }
+  a {
+    display:inline-block;
+    margin-bottom: 12px;
+    color:rgba(76,136,57,1);
+  }
+}
+
+.content {
+  padding:10px;
+}
+
+.game-picker {
+  margin-bottom: 20px;
+  select {
+    font-size: inherit;
+    border:none;
+    height:48px;
+    background: #cee4c7;
+    color:inherit;
+    width: 100%;
+  }
+}
+
+
+h1 {
+  font-size: 30px;
+  margin:10px 0 20px 0;
+}
