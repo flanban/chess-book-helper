@@ -10,17 +10,19 @@
 .game-picker
   %form
     %select#gameSelect{:onchange => "loadGame(this.value);return false;"}
-
-
+  .current-move
+  .mini-controls
+    .left.btn-prev
+    .right.btn-next
 
 #board
 
 #board-buttons
   %button#btnStart.btn.btn-default{:type => "button"}
     %i.fa.fa-fast-backward.fa-lg
-  %button#btnPrevious.btn.btn-default{:type => "button"}
+  %button#btnPrevious.btn.btn-default.btn-prev{:type => "button"}
     %i.fa.fa-step-backward.fa-lg
-  %button#btnNext.btn.btn-default{:type => "button"}
+  %button#btnNext.btn.btn-default.btn-next{:type => "button"}
     %i.fa.fa-step-forward.fa-lg
   %button#btnEnd.btn.btn-default{:type => "button"}
     %i.fa.fa-fast-forward.fa-lg

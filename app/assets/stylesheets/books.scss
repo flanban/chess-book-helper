@@ -22,7 +22,7 @@ p, div {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 .book-info {
-  
+
   h3 {
     font-size:18px;
 
@@ -31,15 +31,27 @@ p, div {
 
 #btnStart {
   background-image: url(image_path('btn-start.png'));
+  &:hover {
+    background-image: url(image_path('btn-start-hover.png'));
+  }
 }
-#btnNext{
+.btn-next {
   background-image: url(image_path('btn-next.png'));
+  &:hover {
+    background-image: url(image_path('btn-next-hover.png'));
+  }
 }
-#btnPrevious {
+.btn-prev {
   background-image: url(image_path('btn-prev.png'));
+  &:hover {
+    background-image: url(image_path('btn-prev-hover.png'));
+  }
 }
 #btnEnd {
   background-image: url(image_path('btn-end.png'));
+  &:hover {
+    background-image: url(image_path('btn-end-hover.png'));
+  }
 }
 
 #board-buttons {
@@ -60,6 +72,7 @@ p, div {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 35%;
+  cursor: pointer;
   &:focus {
     background-color:rgba(76,136,57,.1);
     outline:none;
@@ -88,7 +101,7 @@ p, div {
   }
 }
 .gameMoves {
-  margin: 0px 0 12px 0;
+  margin: 12px 0 12px 0px;
   font-weight: bold;
   span {
     font-weight: 300;
@@ -105,14 +118,54 @@ p, div {
 }
 
 .game-picker {
-  margin-bottom: 20px;
-  select {
-    font-size: inherit;
-    border:none;
+  margin-bottom: 8px;
+  display:flex;
+  justify-content: space-between;
+  .mini-controls {
     height:48px;
-    background: #cee4c7;
-    color:inherit;
-    width: 100%;
+    width:96px;
+    display:flex;
+    justify-content: space-between;
+    > * {
+      height:100%;
+      width:50%;
+      display: inline-block;
+      background-color:transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto 35%;
+      border:1px solid #acb9a8;
+      cursor: pointer;
+      &:first-child {
+        margin-right:4px;
+      }
+      &:focus {
+        background-color:rgba(76,136,57,.4);
+      }
+    }
+  }
+  .current-move {
+    //width:50%;
+    padding-top: 14px;
+    font-family: georgia;
+    font-style:italic;
+    &.b {
+      background: rgba(0,0,0,.3);
+      color: white;
+      padding: 15px 10px 0 10px;
+    }
+  }
+  form {
+    width: 40%;
+    select {
+      font-size: inherit;
+      border:none;
+      height:48px;
+      //background: #cee4c7;
+      color:inherit;
+      width:100%;
+      border:1px solid #acb9a8;
+    }
   }
 }
 

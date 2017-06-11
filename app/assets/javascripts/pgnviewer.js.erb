@@ -1,5 +1,3 @@
-
-
 //Write the game to the DOM
 function writeGameText(g) {
 
@@ -12,40 +10,48 @@ function writeGameText(g) {
 
   //format the moves so each one is individually identified, so it can be highlighted
   moveArray = gameMoves.split(/([0-9]+\.\s)/).filter(function(n) {return n;});
+
   for (var i = 0, l = moveArray.length; i < l; ++i) {
     var s = $.trim(moveArray[i]);
+
     if (!/^[0-9]+\.$/.test(s)) { //move numbers
       m = s.split(/\s+/);
+      //console.log(m)
       for (var j = 0, ll = m.length; j < ll; ++j) {
         m[j] = '<span class="gameMove' + (i + j - 1) + '"><a id="myLink" href="#" onclick="goToMove(' + (i + j - 1) + ');return false;">' + m[j] + '</a></span>';
       }
       s = m.join(' ');
     }
     moveArray[i] = s;
+
   }
 
   var gameData = '<div class="gameMoves">' + moveArray.join(' ');
   if (h.Result)
       gameData += ' <span class="gameResult">' + h.Result + '</span></div>';
   $("#game-data").html(gameData).append(gameHeaderText);
-
+  var moveNumber = (currentPly/2) + 1;
+  var moveNumber = parseInt(moveNumber);
+  //toMove = game.turn()
+  //$("#current-move").append(moveNumber);
+  //console.log(moveNumber);
 }
-$(document).ready(function(){
 
-  //buttons
+//buttons
+$(document).ready(function(){
   $('#btnStart').on('click', function() {
     game.reset();
     currentPly = -1;
     board.position(game.fen());
   });
-  $('#btnPrevious').on('click', function() {
+  $('.btn-prev').on('click', function() {
     if (currentPly >= 0) {
       game.undo();
       currentPly--;
       board.position(game.fen());
     }
   });
-  $('#btnNext').on('click', function() {
+  $('.btn-next').on('click', function() {
     if (currentPly < gameHistory.length - 1) {
       currentPly++;
       game.move(gameHistory[currentPly].san);
@@ -118,6 +124,10 @@ var onChange = function onChange() { //fires when the board position changes
   //highlight the current move
   $("[class^='gameMove']").removeClass('highlight');
   $('.gameMove' + currentPly).addClass('highlight');
+  var moveNumber = (currentPly/2) + 1;
+  var moveNumber = parseInt(moveNumber);
+  var toMove = game.turn();
+  $(".current-move").html('move no. ' + moveNumber).removeClass().addClass(toMove + " current-move");
 }
 
 function loadGame(i) {
@@ -147,15 +157,16 @@ $(document).ready(function() {
         var g = new Chess();
         g.load_pgn(pgnData[i].join('\n'), {newline_char:'\n'});
         var h = g.header();
+
         $('#gameSelect')
-            .append($('<option></option>')
+            .append($('<option>game:</option>')
             .attr('value', i)
-            .text(h.White + ' - ' + h.Black + ', ' + h.Date));
+            .text('Game: ' + (i+1) + ' (' + h.White + ' - ' + h.Black + ')'));
     }
 
     //set up the board
     var cfg = {
-        pieceTheme: '<%= image_url("/assets/chessboardjs/chesspieces/wikipedia/{piece}.png") %>',
+        pieceTheme: '<%= asset_path("/assets/chessboardjs/chesspieces/wikipedia/{piece}.png") %>',
         position: 'start',
         showNotation: false,
         onChange: onChange
