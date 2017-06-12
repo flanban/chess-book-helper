@@ -31,6 +31,9 @@
       %i.fa.fa-fast-forward.fa-lg
 
   #game-data
+- else
+  %p no games
+  = link_to 'Add Game', new_match_path, :class => 'action-button'
 
 .book-info
   %h3 book info
