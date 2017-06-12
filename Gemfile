@@ -55,3 +55,4 @@ gem 'haml'
 gem "haml-rails", "~> 0.9"
 gem 'jquery-rails'
 gem 'inline_svg'
+gem 'rails_12factor', group: :production
