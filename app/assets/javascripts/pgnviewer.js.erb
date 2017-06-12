@@ -147,6 +147,10 @@ var board, //the chessboard
     currentGame;
 
 $(document).ready(function() {
+  testPgn = 'http://www.angelfire.com/games5/monte/bogo_indian_e110.pgn'
+  var gg = new Chess();
+  gg.load_pgn(testPgn);
+  console.log(gg);
 
   if ($('#board').size()) {
     //start doing stuff
@@ -166,6 +170,7 @@ $(document).ready(function() {
 
     //set up the board
     var cfg = {
+//        pieceTheme: '<%= asset_path("/assets/chessboardjs/chesspieces/wikipedia/{piece}.png") %>',
         pieceTheme: '<%= asset_path("/assets/chessboardjs/chesspieces/wikipedia/{piece}.png") %>',
         position: 'start',
         showNotation: false,

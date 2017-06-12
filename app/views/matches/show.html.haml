@@ -1,9 +1,25 @@
-= @match.pgn
+.game{:data => {:pgn => @match.pgn}}
 
+#board
+
+#board-buttons
+  %button#btnStart.btn.btn-default{:type => "button"}
+    %i.fa.fa-fast-backward.fa-lg
+  %button#btnPrevious.btn.btn-default.btn-prev{:type => "button"}
+    %i.fa.fa-step-backward.fa-lg
+  %button#btnNext.btn.btn-default.btn-next{:type => "button"}
+    %i.fa.fa-step-forward.fa-lg
+  %button#btnEnd.btn.btn-default{:type => "button"}
+    %i.fa.fa-fast-forward.fa-lg
+
+#game-data
+
+%h5 Used in:
 %br
-
 - @match.books.each do |book|
   = book.title
+  %br
 
-= link_to 'Edit', edit_match_path(@match)
-= link_to 'back to matches', matches_path
+= link_to 'Edit', edit_match_path(@match), :class => 'admin-button'
+= link_to 'Matches Directory', matches_path, :class => 'admin-button'
+= link_to 'Books Directory', books_path, :class => 'admin-button'

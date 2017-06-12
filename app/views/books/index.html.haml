@@ -1,11 +1,16 @@
 %h1 Books
 - @books.each do |book|
-  = book.title
-  = link_to 'Show', book_path(book)
-  = link_to 'Edit', edit_book_path(book)
-  = link_to 'Destroy', book_path(book),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
-  %br
+  .action-links
+    %h2
+      = book.title
+    = link_to 'Show', book_path(book), :class => "action-button"
+    = link_to 'Edit', edit_book_path(book), :class => "action-button"
+    = link_to 'Destroy', book_path(book),
+      method: :delete,
+      :class => "action-button",
+      data: { confirm: 'Are you sure?' }
+    %br
 
-= link_to 'New book', new_book_path
+= link_to 'New book', new_book_path, :class => "admin-button"
+= link_to 'Matches Directory', matches_path, :class => 'admin-button'
+= link_to 'Books Directory', books_path, :class => 'admin-button'

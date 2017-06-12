@@ -18,10 +18,19 @@
     = f.label :author
     %br/
     = f.text_field :author
-  %p
-    = f.submit
+
+
+  %h3.games-list-header Add Existing Games
 
   - for match in Match.all
-    = check_box_tag 'book[match_ids][]', match.id, @book.matches.include?(match)
-    = match.pgn
-    %br
+    .pgn-wrapper
+      = check_box_tag 'book[match_ids][]', match.id, @book.matches.include?(match)
+      %p
+        = match.pgn.truncate(130)
+      %br
+
+  %h3.games-list-header Create New Game
+
+
+  %p
+    = f.submit :class => 'action-button'
